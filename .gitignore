@@ -1,0 +1,45 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+/build
+next-env.d.ts
+*.tsbuildinfo
+
+# environment files (only the placeholder example is tracked)
+.env*
+!.env.example
+
+# credentials and keys
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+credentials*.json
+service-account*.json
+
+# local caches
+.npm/
+.eslintcache
+.cache/
+
+# logs
+npm-debug.log*
+*.log
+
+# local Supabase state
+supabase/.temp/
+supabase/.branches/
+
+# deployment tooling
+.vercel
+
+# OS-generated files
+.DS_Store
+Thumbs.db
