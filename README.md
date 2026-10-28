@@ -2,10 +2,38 @@
 
 An HR knowledge and operations platform for employees and HR administrators.
 
-**Status: early application foundation.** The repository currently contains a minimal Next.js
-application with linting, formatting, type checking, a unit test and a CI workflow definition.
-Authentication, the HR assistant, policy search, forms, the administrator portal and deployment are
-not implemented yet.
+**Status: early application foundation.** The repository currently contains a Next.js application
+with navigable employee and HR administration portal shells, a small design-token system, unit
+tests and a CI workflow definition. Every portal page is a clearly labelled placeholder that
+describes planned functionality. Authentication, the HR assistant, policy search, forms, approvals,
+analytics and deployment are not implemented yet.
+
+All demonstration content refers to Larkspur Works, a fictional organization.
+
+## Routes
+
+| Route              | Portal            | Status                      |
+| ------------------ | ----------------- | --------------------------- |
+| `/`                | Portal selection  | Available                   |
+| `/chat`            | Employee          | Placeholder                 |
+| `/forms`           | Employee          | Placeholder                 |
+| `/requests`        | Employee          | Placeholder                 |
+| `/admin`           | HR administration | Redirects to `/admin/inbox` |
+| `/admin/inbox`     | HR administration | Placeholder                 |
+| `/admin/people`    | HR administration | Placeholder                 |
+| `/admin/questions` | HR administration | Placeholder                 |
+| `/admin/analytics` | HR administration | Placeholder                 |
+
+Sign-in is not enabled yet, so both portals are openly reachable in this preview.
+
+## Project structure
+
+- `src/app` – routes. Employee pages live in the `(employee)` route group; HR administration
+  pages live under `admin`.
+- `src/components/portal-shell` – the shared portal layout and navigation.
+- `src/components/ui` – small shared UI primitives.
+- `src/lib/navigation.ts` – portal navigation definitions.
+- `src/app/globals.css` – design tokens (colour, spacing, typography) with light and dark themes.
 
 ## Requirements
 
