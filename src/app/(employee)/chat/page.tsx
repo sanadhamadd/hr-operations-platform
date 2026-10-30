@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/ui/page-header";
 import { PlaceholderNotice } from "@/components/ui/placeholder-notice";
+import { requireEmployeeAccess } from "@/lib/auth/session";
 
 export const metadata: Metadata = { title: "Chat" };
 
-export default function ChatPage() {
+export default async function ChatPage() {
+  await requireEmployeeAccess();
+
   return (
     <>
       <PageHeader

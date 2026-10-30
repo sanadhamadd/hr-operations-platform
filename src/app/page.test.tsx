@@ -24,8 +24,13 @@ describe("Home page", () => {
     }
   });
 
-  it("discloses that sign-in is disabled and the organization is fictional", () => {
-    expect(html).toContain("Sign-in is not enabled");
+  it("links to sign-in and states that access depends on the account's role", () => {
+    expect(html).toContain('href="/login"');
+    expect(html).toContain("only to the roles it");
+    expect(html).not.toContain("Sign-in is not enabled");
+  });
+
+  it("states that the organization is fictional", () => {
     expect(html).toContain("a fictional organization");
   });
 });

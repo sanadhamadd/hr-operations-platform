@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { loginPath } from "@/lib/auth/access";
 import { adminPortal, employeePortal } from "@/lib/navigation";
 import { site } from "@/lib/site";
 
@@ -25,8 +26,11 @@ export default function Home() {
         available yet.
       </p>
       <p className={styles.notice}>
-        Sign-in is not enabled in this preview, so both portals are open for demonstration. All
-        content refers to {site.organizationName}, a fictional organization.
+        Accounts are created by the HR team, and each portal is available only to the roles it
+        serves. All content refers to {site.organizationName}, a fictional organization.
+      </p>
+      <p>
+        <Link href={loginPath}>Sign in</Link>
       </p>
 
       <h2 className={styles.sectionTitle}>Choose a portal</h2>

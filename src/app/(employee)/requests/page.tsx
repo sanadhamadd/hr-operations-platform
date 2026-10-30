@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/ui/page-header";
 import { PlaceholderNotice } from "@/components/ui/placeholder-notice";
+import { requireEmployeeAccess } from "@/lib/auth/session";
 
 export const metadata: Metadata = { title: "My Requests" };
 
-export default function RequestsPage() {
+export default async function RequestsPage() {
+  await requireEmployeeAccess();
+
   return (
     <>
       <PageHeader
