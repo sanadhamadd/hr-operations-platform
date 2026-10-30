@@ -13,7 +13,7 @@ vi.mock("next/navigation", () => ({
 
 function renderShell(portal = employeePortal) {
   return renderToStaticMarkup(
-    <PortalShell portal={portal}>
+    <PortalShell portal={portal} userEmail="jordan.lee@example.com">
       <h1>Page content</h1>
     </PortalShell>,
   );
@@ -72,10 +72,20 @@ describe("PortalShell", () => {
     expect(currentPageLinks(renderShell())).toEqual([]);
   });
 
-  it("states that the preview has no sign-in and uses fictional data", () => {
+  it("shows the signed-in user and a sign-out form that posts to the logout route", () => {
     const html = renderShell();
 
-    expect(html).toContain("sign-in is not enabled yet");
+    expect(html).toContain("jordan.lee@example.com");
+    expect(html).toMatch(
+      /<form action="\/auth\/logout" method="post"><button [^>]*type="submit">Sign out<\/button><\/form>/,
+    );
+  });
+
+  it("states that pages describe planned features and the data is fictional", () => {
+    const html = renderShell();
+
+    expect(html).toContain("pages describe planned features only");
+    expect(html).not.toContain("sign-in is not enabled");
     expect(html).toContain("a fictional organization");
   });
 });

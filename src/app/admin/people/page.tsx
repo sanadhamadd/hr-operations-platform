@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/ui/page-header";
 import { PlaceholderNotice } from "@/components/ui/placeholder-notice";
+import { requireHrAccess } from "@/lib/auth/session";
 
 export const metadata: Metadata = { title: "People" };
 
-export default function PeoplePage() {
+export default async function PeoplePage() {
+  await requireHrAccess();
+
   return (
     <>
       <PageHeader

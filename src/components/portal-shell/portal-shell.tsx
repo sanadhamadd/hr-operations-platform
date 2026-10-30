@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { SignOutButton } from "@/components/auth/sign-out-button";
 import { site } from "@/lib/site";
 import type { Portal } from "@/lib/navigation";
 
@@ -9,10 +10,11 @@ import styles from "./portal-shell.module.css";
 
 type PortalShellProps = {
   portal: Portal;
+  userEmail: string;
   children: ReactNode;
 };
 
-export function PortalShell({ portal, children }: PortalShellProps) {
+export function PortalShell({ portal, userEmail, children }: PortalShellProps) {
   return (
     <div className={styles.shell}>
       <a className={styles.skipLink} href="#main-content">
@@ -26,14 +28,16 @@ export function PortalShell({ portal, children }: PortalShellProps) {
           </Link>
           <span className={styles.portalLabel}>{portal.label}</span>
         </div>
-        <Link className={styles.switchLink} href="/">
-          Switch portal
-        </Link>
+        <div className={styles.account}>
+          <Link className={styles.switchLink} href="/">
+            Switch portal
+          </Link>
+          <span className={styles.userEmail}>{userEmail}</span>
+          <SignOutButton />
+        </div>
       </header>
 
-      <p className={styles.previewBanner}>
-        Preview build: sign-in is not enabled yet and pages describe planned features only.
-      </p>
+      <p className={styles.previewBanner}>Early preview: pages describe planned features only.</p>
 
       <div className={styles.body}>
         <aside className={styles.sidebar}>

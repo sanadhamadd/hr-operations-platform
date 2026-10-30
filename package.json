@@ -13,16 +13,24 @@
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:integration": "vitest run --config vitest.integration.config.mts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "supabase:start": "supabase start -x studio,realtime,storage-api,imgproxy,edge-runtime,logflare,vector,supavisor,postgres-meta",
+    "supabase:status": "supabase status",
     "db:start": "supabase db start",
     "db:stop": "supabase stop",
-    "db:test": "supabase test db"
+    "db:migrate": "supabase migration up --local",
+    "db:test": "supabase test db",
+    "auth:provision": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local src/lib/auth/provisioning.ts"
   },
   "dependencies": {
+    "@supabase/ssr": "0.12.7",
+    "@supabase/supabase-js": "2.118.0",
     "next": "16.4.3",
     "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "react-dom": "19.3.1",
+    "server-only": "0.0.1"
   },
   "devDependencies": {
     "@types/node": "24.19.2",
